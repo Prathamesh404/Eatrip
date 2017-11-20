@@ -11,6 +11,10 @@
   <body>
     <h1>Sign-up Page</h1>
     <form class="" action="index.html" method="post">
+      {% csrf_token %}
+      {{ user_form }}
+      {{ restro_form }}
+      <button type="submit" name="button">Submit</button>
     </form>
   <script src="% static 'js/bootstrap.min.js' %"></script>
   </body>

@@ -10,4 +10,4 @@ class Restro(models.Model): #this is to create a new model for retaurant.
     logo = models.ImageField(upload_to='restaurant_logo/' , blank=False)
 
     def __str__(self) :
-        return self.name
+        return self.address

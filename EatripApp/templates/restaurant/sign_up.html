@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Sign-up Page</h1>
-    <form class="" action="index.html" method="post">
+    <form method="POST" enctype="multipart/form-data"> <!-- For uploading images. -->
       {% csrf_token %}
       {{ user_form }}
       {{ restro_form }}

@@ -25,7 +25,7 @@ SECRET_KEY = '48o@&dixuf2r(e1$ah1nteixkg9+rdq8l(t7q$5b-rkr%9f51%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [fierce-mountain-53860.herokuapp.com]
 
 
 # Application definition

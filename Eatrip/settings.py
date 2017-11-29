@@ -135,11 +135,6 @@ MEDIA_URL = '/media/'
 
 import dj_database_url
 db_from_env = dj_database_url.config()
-<<<<<<< HEAD
-DATABASES['default'].update(db_from_env)
-||||||| merged common ancestors
-DATABASE['default'].update(db_from_env)
-=======
 DATABASES['default'].update(db_from_env)
 
 
@@ -170,4 +165,3 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
 )
->>>>>>> master

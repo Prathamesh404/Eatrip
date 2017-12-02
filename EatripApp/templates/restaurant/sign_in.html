@@ -1,25 +1,12 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% extends 'base_signup.html' %}
 
-  </head>
-  <body>
-    <h1>The Sign Page</h1>
+{% block title %}Sign In{% endblock %}
+{% block heading %}Restaaurant - Sign In{% endblock %}
+  {% block content %}
     <form method="POST">
       {% csrf_token %} <!--This is one of the security token to authenticate django -->
       {{ form }}
       <button type="submit" name="button">Submit</button>
     </form>
 
-
-
-
-
-  <script src="% static 'js/bootstrap.min.js' %"></script>
-  </body>
-</html>
+  {% endblock %}

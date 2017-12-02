@@ -9,7 +9,9 @@
 
   </head>
   <body>
-    {% block page %}{% end block %}
+    {% block page %} {% endblock %}
+    {% block sidebar%} {% endblock%}
+    <hr>
     <a href="{% url 'restaurant-sign-out' %}">Log out</a>
   <script src="% static 'js/bootstrap.min.js' %"></script>
   </body>

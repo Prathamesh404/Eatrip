@@ -1,4 +1,45 @@
+body {
+  padding-top: 50px;
+  background-color: #EDF3F5;
+  overflow: auto;
+}
 .bg-blue {
   background-color: #3F3F63;
-  
+}
+
+.btn-pink{
+  color:white;
+  background-color: #EE5462;
+}
+
+.btn-pink:hover,
+.btn-pink:focus{
+  color:white;
+  background-color: #DA4F5D;
+}
+
+/* SIDEBAR */
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+  background-color: #3F3F63;
+  overflow: auto;
+}
+
+/*Side Bar for Header*/
+.sidebar > div:first-child {
+  padding: 30px 10px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #383957;
+}
+
+.sidebar > div:first-child {
+  padding: 30px 10px;
+  font-weight: bold;
+  font-size: 15px;
+  background-color: #383957;
 }

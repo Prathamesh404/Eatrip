@@ -9,10 +9,22 @@
 
   </head>
   <body>
-    {% block page %} {% endblock %}
-    {% block sidebar%} {% endblock%}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+          {% block sidebar%} {% endblock%}
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 content">
+          {% block page %} {% endblock %}      
+        </div>
+      </div>
+
+    </div>
+
+
     <hr>
     <a href="{% url 'restaurant-sign-out' %}">Log out</a>
   <script src="% static 'js/bootstrap.min.js' %"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from EatripApp.forms import UserForm, RestroForm
+from EatripApp.forms import UserForm, RestroForm, UserFormForEdit
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 
@@ -13,11 +13,18 @@ def home(request):
 
 @login_required(login_url='/restaurant/sign-in')
 def restaurant_home(request):
-    return render(request, 'restaurant/home.html', {})
+    return redirect(restaurant_order)
 
 @login_required(login_url='/restaurant/sign-in')
 def restaurant_account(request):
-    return render(request, 'restaurant/account.html', {})
+    user_form = UserFormForEdit(instance = request.user)
+    restaurant_form = RestroForm(instance = request.user.restaurant)
+
+
+    return render(request, 'restaurant/account.html', {
+        "user_form": user_form,
+        "restaurant_form": restaurant_form
+})
 
 @login_required(login_url='/restaurant/sign-in')
 def restaurant_meal(request):

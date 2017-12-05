@@ -11,9 +11,19 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields= {"username", "password", "first_name", "last_name", "email"}
+        fields= ["username", "first_name", "last_name", "password", "email"]
 
 class RestroForm(forms.ModelForm):
     class Meta:
         model = Restro
-        fields= {"name", "phone", "address", "logo"}
+        fields= ["name", "address", "phone", "logo"]
+
+class UserFormForEdit(forms.ModelForm):
+    '''
+    email and password came from the User model,
+    '''
+    email = forms.CharField(max_length=100, required=True) #
+
+    class Meta:
+        model = User
+        fields= ["username", "first_name", "last_name",  "email"]

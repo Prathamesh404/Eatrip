@@ -38,7 +38,8 @@ urlpatterns = [
     url(r'^restaurant/meal/$', views.restaurant_meal, name = 'restaurant-meal'),
     url(r'^restaurant/order/$', views.restaurant_order, name = 'restaurant-order'),
     url(r'^restaurant/report/$', views.restaurant_report, name = 'restaurant-report'),
-
+    url(r'^restaurant/meal/add/$', views.restaurant_add_meal, name = 'restaurant-add-meal'),
+    url(r'^restaurant/meal/edit/(?P<meal_id>\d+)$', views.restaurant_edit_meal, name = 'restaurant-edit-meal'),
     #For sign-up/sign-out/sign-out
     url(r'^api/social/', include('rest_framework_social_oauth2.urls')),
     #/convert token (sign-in/sign-up)

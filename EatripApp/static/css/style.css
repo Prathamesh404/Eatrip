@@ -19,7 +19,6 @@ body {
 .btn-pink {
   color: white;
   background-color: #EE5462;
-  width: 70%;
 }
 
 .btn-pink:hover,
@@ -107,9 +106,19 @@ body {
 
 /* CONTENT */
 .content {
-  padding: 0 40px;
+  padding: 0 30px;
 }
 
 .content .panel {
   border: none;
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td {
+  vertical-align: middle;
+}
+
+.table,
+.table > thead > tr > th {
+  border-color: #88A1B2
 }

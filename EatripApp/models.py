@@ -71,4 +71,4 @@ class OrderDetails(models.Model):
     sub_total = models.IntegerField()
 
     def __str__(self):
-        return self.user.get_full_name()
+        return str(self.id)

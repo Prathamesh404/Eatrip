@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from EatripApp.forms import UserForm, RestroForm, UserFormForEdit, MealForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from EatripApp.models import Meal
+from EatripApp.models import Meal, Order
 # Create your views here.
 # We are creating a function to render the home page-render is used to render the url/
 #
@@ -77,7 +77,15 @@ def restaurant_edit_meal(request, meal_id):
 
 @login_required(login_url='/restaurant/sign-in')
 def restaurant_order(request):
-    return render(request, 'restaurant/order.html', {})
+    if request.method == "POST":
+        orders = Order.objects.get(id= request.POST["id"], restaurant = request.user.restaurant)
+        if orders.status == Order.COOKING:
+            orders.status = Order.READY
+            orders.save()
+
+    orders = Order.objects.filter(restaurant = request.user.restaurant).order_by("-id")
+
+    return render(request, 'restaurant/order.html', {"orders": orders})
 
 @login_required(login_url='/restaurant/sign-in')
 def restaurant_report(request):

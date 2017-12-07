@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from EatripApp import views
+from EatripApp import views, apis
 from django.contrib.auth import views as auth_views #setting alias with use of views.
 from django.conf.urls.static import static
 from django.conf import settings #these two are for uploading media.
@@ -44,4 +44,11 @@ urlpatterns = [
     url(r'^api/social/', include('rest_framework_social_oauth2.urls')),
     #/convert token (sign-in/sign-up)
     #/revoke-token (sign-out)
+
+    #Apis for customer
+    url(r'^api/customer/restaurant/$', apis.customer_get_restaurants),
+    url(r'^api/customer/meals/(?P<restaurant_id>\d+)/$', apis.customer_get_meals),
+    url(r'^api/customer/order/$', apis.customer_add_order),
+    url(r'^api/customer/order/lastest/$', apis.customer_get_lastest_order),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

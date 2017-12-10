@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^restaurant/meal/edit/(?P<meal_id>\d+)$', views.restaurant_edit_meal, name = 'restaurant-edit-meal'),
     #For sign-up/sign-out/sign-out
     url(r'^api/social/', include('rest_framework_social_oauth2.urls')),
+    url(r'^api/restaurant/order/notification/(?P<last_request_time>.+)/$', apis.restaurant_order_notification),
+
     #/convert token (sign-in/sign-up)
     #/revoke-token (sign-out)
 
@@ -50,5 +52,14 @@ urlpatterns = [
     url(r'^api/customer/meals/(?P<restaurant_id>\d+)/$', apis.customer_get_meals),
     url(r'^api/customer/order/$', apis.customer_add_order),
     url(r'^api/customer/order/lastest/$', apis.customer_get_lastest_order),
+    url(r'^api/customer/driver/location/$', apis.customer_driver_location ),
+
+    #API for Driver
+    url(r'^api/driver/orders/ready/$', apis.driver_get_ready_orders),
+    url(r'^api/driver/order/pick/$', apis.driver_pick_orders),
+    url(r'^api/driver/order/latest/$', apis.driver_get_latest_orders),
+    url(r'^api/driver/order/complete/$', apis.driver_complete_orders),
+    url(r'^api/driver/revenue/$', apis.driver_get_revenue),
+    url(r'^api/driver/location/update/$', apis.driver_update_location),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

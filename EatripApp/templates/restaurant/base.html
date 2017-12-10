@@ -2,6 +2,30 @@
 
 {% block title %} Restaurant {% endblock %}
 
+{% block script%}
+<script type="text/javascript">
+      $(document).ready(function() {
+          var now = new Date();
+          setInterval(function() {
+              $.ajax({
+                  url: '/api/restaurant/order/notification/' + now.toISOString() + '/',
+                  method: 'GET',
+                  success: function(data) {
+                      if (data['notification'] === 0) {
+                          $('.badge').text('');
+                      } else {
+                          $('.badge').text(data['notification']);
+                      }
+                  }
+              })
+          }, 3000)
+      })
+
+</script>
+{% endblock %}
+
+</script> %}
+
 {% block sidebar %}
     {% url 'restaurant-order' as restaurant_order_url %}
     {% url 'restaurant-meal' as restaurant_meal_url %}
@@ -24,7 +48,8 @@
       <br>
       <a href="{% url 'restaurant-order' %}"
            class="list-group-item {% if request.path == restaurant_order_url %} active {% endif %}">
-           Order
+           Orders
+           <span class="badge"></span>
       </a>
       <br>
       <a href="{% url 'restaurant-report' %}"

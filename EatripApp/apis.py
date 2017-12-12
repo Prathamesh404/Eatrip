@@ -219,4 +219,4 @@ def driver_update_location(request):
         driver.location = request.POST["location"]
         driver.save()
 
-        return JsonResponse({"status": "success"})
+    return JsonResponse({"status": "success"})

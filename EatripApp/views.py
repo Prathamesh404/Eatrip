@@ -90,58 +90,7 @@ def restaurant_order(request):
 
 @login_required(login_url='/restaurant/sign-in/')
 def restaurant_report(request):
-    # Calculate revenue and number of order by current week
-    from datetime import datetime, timedelta
-
-    revenue = []
-    orders = []
-
-    # Calculate weekdays
-    today = datetime.now()
-    current_weekdays = [today + timedelta(days = i) for i in range(0 - today.weekday(), 7 - today.weekday())]
-
-    for day in current_weekdays:
-        delivered_orders = Order.objects.filter(
-            restaurant = request.user.restaurant,
-            status = Order.DELIVERED,
-            created_at__year = day.year,
-            created_at__month = day.month,
-            created_at__day = day.day
-        )
-        revenue.append(sum(order.total for order in delivered_orders))
-        orders.append(delivered_orders.count())
-
-
-    # Top 3 Meals
-    top3_meals = Meal.objects.filter(restaurant = request.user.restaurant)\
-                     .annotate(total_order = Sum('orderdetails__quantity'))\
-                     .order_by("-total_order")[:3]
-
-    meal = {
-        "labels": [meal.name for meal in top3_meals],
-        "data": [meal.total_order or 0 for meal in top3_meals]
-    }
-
-    # Top 3 Drivers
-    top3_drivers = Driver.objects.annotate(
-        total_order = Count(
-            Case (
-                When(order__restaurant = request.user.restaurant, then = 1)
-            )
-        )
-    ).order_by("-total_order")[:3]
-
-    driver = {
-        "labels": [driver.user.get_full_name() for driver in top3_drivers],
-        "data": [driver.total_order for driver in top3_drivers]
-    }
-
-    return render(request, 'restaurant/report.html', {
-        "revenue": revenue,
-        "orders": orders,
-        "meal": meal,
-        "driver": driver
-    })
+    return render(request, 'restaurant/report.html', {})
 
 def restaurant_sign_up(request):
     user_form = UserForm()
